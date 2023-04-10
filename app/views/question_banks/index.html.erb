@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Question banks</h1>
+
+<div id="question_banks">
+  <% @question_banks.each do |question_bank| %>
+    <%= render question_bank %>
+    <p>
+      <%= link_to "Show this question bank", question_bank %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New question bank", new_question_bank_path %>

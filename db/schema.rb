@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_23_034308) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_10_193521) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -49,6 +49,63 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_23_034308) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "question_banks", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "question_type"
+    t.text "question"
+    t.string "answer"
+    t.text "explanation"
+    t.integer "question_bank_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_bank_id"], name: "index_questions_on_question_bank_id"
+  end
+
+  create_table "quiz_questions", force: :cascade do |t|
+    t.integer "question_id", null: false
+    t.integer "quiz_id", null: false
+    t.integer "points"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_quiz_questions_on_question_id"
+    t.index ["quiz_id"], name: "index_quiz_questions_on_quiz_id"
+  end
+
+  create_table "quiz_responses", force: :cascade do |t|
+    t.text "response"
+    t.integer "user_id"
+    t.integer "quiz_question_id", null: false
+    t.integer "quiz_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quiz_id"], name: "index_quiz_responses_on_quiz_id"
+    t.index ["quiz_question_id"], name: "index_quiz_responses_on_quiz_question_id"
+  end
+
+  create_table "quizzes", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "quiz_type"
+    t.integer "time_limit"
+    t.boolean "shuffle"
+    t.integer "question_bank_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_bank_id"], name: "index_quizzes_on_question_bank_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "questions", "question_banks"
+  add_foreign_key "quiz_questions", "questions"
+  add_foreign_key "quiz_questions", "quizzes"
+  add_foreign_key "quiz_responses", "quiz_questions"
+  add_foreign_key "quiz_responses", "quizzes"
+  add_foreign_key "quizzes", "question_banks"
 end
