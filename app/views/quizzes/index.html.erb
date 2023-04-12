@@ -1,6 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Quizzes</h1>
+<h1 class="text-light text-center">Your Quizzes</h1>
+<hr class="hr w-75 mx-auto text-light">
 
 <div id="quizzes">
   <% @quizzes.each do |quiz| %>
@@ -11,4 +12,4 @@
   <% end %>
 </div>
 
-<%= link_to "New quiz", new_quiz_path %>
+<%= link_to "New quiz", new_quiz_path, class: "btn btn-primary m-3" %>

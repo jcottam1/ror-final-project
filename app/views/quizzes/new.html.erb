@@ -1,4 +1,4 @@
-<h1>Create New quiz</h1>
+<h1 class="text-light">Create New quiz</h1>
 
 <%= render "form", quiz: @quiz %>
 
@@ -6,5 +6,5 @@
 <br>
 
 <div>
-  <%= link_to "Back to quizzes", quizzes_path %>
+  <%= link_to "Back to quizzes", quizzes_path, class: "btn btn-danger m-3" %>
 </div>

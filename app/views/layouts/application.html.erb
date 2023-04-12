@@ -13,20 +13,21 @@
   <body>
       <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Quizem</a>
+        <a class="navbar-brand" href="#"> <%= image_tag "quizem-logo.svg", height: 50 %></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <li class="nav-item d-flex justify-content-end">
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+          <%= link_to "Home", root_url, class: "nav-link text-light" %>
+        </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <%= link_to "Your Quizzes", quizzes_url, class: "nav-link text-light" %>
             </li>
             <li class="nav-item">
-              <%= link_to "Your Quizzes", quizzes_url, class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Create Quiz +", new_quiz_url, class: "btn create-quiz-btn rounded-pill nav-link" %>
+              <%= link_to "Create Quiz +", new_quiz_url, class: "btn create-quiz-btn rounded-pill" %>
             </li>
             
           </ul>
@@ -35,7 +36,7 @@
     </nav>
     <%= yield %>
 
-    <footer class="mt-5 pt-3 border-top text-center">&copy; All rights reserved - WEB 3200 - 2023
+    <footer class="border-top text-center"><p class="">&copy; All rights reserved - WEB 3200 - 2023</p>
     </footer>
   </body>
 </html>

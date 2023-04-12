@@ -14,12 +14,23 @@
  *= require_self
  */
 
+ $primary: #39A0FF;
+
  @import "bootstrap";
  
  .get-started-button {
     width: 310px;
     background-color: #9CCF75;
     color: white;
+ }
+
+ .get-started-button:hover{
+   background-color: #577540;
+   color: white;
+ }
+
+ body{
+   background-color: #272727;
  }
 
  .home-main {
@@ -39,6 +50,8 @@
  nav, footer {
     background-color: #545454;
     color: white;
+    padding: 3%;
+    border: none;
  }
 
  .nav-item {
@@ -66,4 +79,17 @@
     width: 130px;
     background-color: #39A0FF;
     color: white;
+ }
+ .home-main{
+   padding-top: 300px;
+   padding-bottom: 300px;
+ }
+
+ .create-quiz-btn:hover{
+   background-color: #296cac;
+ }
+
+ footer{
+   display: flex; 
+   justify-content: center;  
  }

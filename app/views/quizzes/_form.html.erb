@@ -12,17 +12,17 @@
   <% end %>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.label :name, style: "display: block" , class: "text-light pb-3 form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :quiz_type, style: "display: block" %>
-    <%= form.select :quiz_type, Quiz::QUIZ_TYPES %>
+    <%= form.label :quiz_type, style: "display: block", class: "text-light mb-3 form-label" %> 
+    <%= form.select :quiz_type, Quiz::QUIZ_TYPES, class: "form-select" %>
   </div>
 
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary m-3" %>
   </div>
 <% end %>
